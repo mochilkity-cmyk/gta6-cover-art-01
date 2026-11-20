@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — Make GTA-style cover art</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="logo"><span class="logo-mark">NC</span> NEON COAST <em>Cover Studio</em></div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo">↩ Undo</button>
+    <button id="redoBtn" type="button" title="Redo">↪ Redo</button>
+    <button id="exportAllBtn" type="button" class="primary">⬇ Export all sizes</button>
+  </div>
+</header>
+
+<main class="studio">
+  <section class="preview-col">
+    <div class="preview-wrap">
+      <canvas id="preview" width="1080" height="1080"></canvas>
+    </div>
+    <p class="hint">Click a panel to select it, then drag it to pan the photo. Pick a sample below or upload your own.</p>
+    <div class="thumb-row" id="thumbRow" aria-label="Photos"></div>
+    <div class="upload-row">
+      <label class="upload-btn" for="fileInput">＋ Upload photos from your machine</label>
+      <input id="fileInput" type="file" accept="image/*" multiple hidden>
+      <span class="local-note">Photos stay on your machine — never uploaded.</span>
+    </div>
+  </section>
+
+  <aside class="controls">
+    <section class="panel">
+      <h2>1 · Layout</h2>
+      <div class="btn-grid" id="layoutRow"></div>
+    </section>
+
+    <section class="panel">
+      <h2>2 · Sunset grade</h2>
+      <div class="btn-grid" id="gradeRow"></div>
+    </section>
+
+    <section class="panel">
+      <h2>3 · Caption</h2>
+      <label class="field">Big title
+        <input id="titleInput" type="text" maxlength="24" value="NEON COAST">
+      </label>
+      <label class="field">Neon script subtitle
+        <input id="subtitleInput" type="text" maxlength="40" value="Vice City nights">
+      </label>
+      <label class="field">Badge ribbon
+        <input id="badgeInput" type="text" maxlength="12" value="HOT ★ NEW">
+      </label>
+      <label class="field">Star heat meter
+        <input id="heatInput" type="range" min="1" max="5" step="1" value="4">
+        <span id="heatLabel">★★★★☆</span>
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>4 · Selected panel</h2>
+      <label class="field">Photo in this panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label class="field">Zoom
+        <input id="zoomInput" type="range" min="1" max="3" step="0.05" value="1">
+      </label>
+      <div class="toggle-row">
+        <label><input id="grainToggle" type="checkbox" checked> Film grain</label>
+        <label><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+      </div>
+      <button id="fillAllBtn" type="button">Fill every panel with this photo</button>
+    </section>
+
+    <section class="panel">
+      <h2>5 · Export PNG</h2>
+      <div class="export-grid">
+        <button type="button" data-export="1080x1080">1080 × 1080<br><small>Square post</small></button>
+        <button type="button" data-export="1080x1350">1080 × 1350<br><small>Portrait post</small></button>
+        <button type="button" data-export="1920x1080">1920 × 1080<br><small>Wide / desktop</small></button>
+        <button type="button" data-export="1080x1920">1080 × 1920<br><small>Story</small></button>
+      </div>
+      <p class="status" id="status">Ready — pick a photo and a layout.</p>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">Neon Coast Cover Studio — original art, original lettering. No Rockstar logos, artwork or fonts. Fonts: Anton &amp; Pacifico (SIL Open Font License).</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
